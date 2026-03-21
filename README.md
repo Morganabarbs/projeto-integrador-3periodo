@@ -14,7 +14,11 @@ Desenvolver um sistema completo envolvendo frontend, backend e banco de dados, o
 Em desenvolvimento inicial.
 
 ## 🛠️ Tecnologias
-*A definir*
+Para garantir a escalabilidade e segurança do sistema, serão utilizadas as seguintes tecnologias:
+Backend: Java com Spring Boot e banco de dados relacional (MySql) 
+Frontend Web: React (PWA).
+Frontend Mobile: React Native.
+Serviços Integrados: OCR para leitura automática de certificados e serviço de e-mail para notificações automáticas
 
 ## 👥 Equipe
 Projeto desenvolvido em grupo para fins acadêmicos.
@@ -22,6 +26,6 @@ TADS049 - SENAC
 Participantes:
 -Morgana Barbosa
 -Luis Augusto
--Ruth camille
+-Ruth camile
 -João Cesar
--Igor Alver
+-Igor Alves
