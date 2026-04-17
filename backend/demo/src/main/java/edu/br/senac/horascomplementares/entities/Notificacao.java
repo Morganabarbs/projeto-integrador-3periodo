@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "Notificacao")
@@ -20,9 +21,19 @@ public class Notificacao {
 
     private String canal;
     private String tipo;
+
+    @Column(name = "data_envio")
     private LocalDateTime dataEnvio;
 
     @ManyToOne
     @JoinColumn(name = "id_validacao", nullable = false)
     private Validacao validacao;
+
+    @ManyToMany
+    @JoinTable(
+        name = "Recebe",
+        joinColumns = @JoinColumn(name = "id_notificacao"),
+        inverseJoinColumns = @JoinColumn(name = "id_usuario")
+    )
+    private Set<Usuario> destinatarios;
 }

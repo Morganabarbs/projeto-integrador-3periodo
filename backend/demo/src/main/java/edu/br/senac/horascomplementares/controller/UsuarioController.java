@@ -1,6 +1,8 @@
 package edu.br.senac.horascomplementares.controller;
 
 import org.springframework.web.bind.annotation.*;
+
+import edu.br.senac.horascomplementares.entities.Usuario;
 import edu.br.senac.horascomplementares.repository.UsuarioRepository;
 import java.util.List;
 
@@ -14,7 +16,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<UsuarioRepository> listar() {
+    public List<Usuario> listar() {
         return repo.findAll();
     }
 

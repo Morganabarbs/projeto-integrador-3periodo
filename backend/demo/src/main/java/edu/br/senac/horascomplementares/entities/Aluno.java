@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Aluno")
+@DiscriminatorValue("ALUNO")
 @PrimaryKeyJoinColumn(name = "id_usuario")
 @Getter @Setter
 public class Aluno extends Usuario {

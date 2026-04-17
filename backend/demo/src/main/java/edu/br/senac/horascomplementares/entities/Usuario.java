@@ -1,17 +1,21 @@
+// entities/Usuario.java
 package edu.br.senac.horascomplementares.entities;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.JOINED) // Estratégia para Aluno e Coordenador
+@Table(name = "Usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "perfil", discriminatorType = DiscriminatorType.STRING)
 @Getter @Setter
-public class Usuario {
-	@Id
+public abstract class Usuario {
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-	private Integer id;
+    private Integer id;
 
     @Column(nullable = false)
     private String nome;
@@ -22,5 +26,5 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-    private String perfil;
+    // REMOVIDO: private String perfil;  ← era isso que causava o erro
 }
