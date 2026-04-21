@@ -80,18 +80,18 @@ public class CertificadoService {
                 .collect(Collectors.toList());
     }
 
-    private CertificadoResponseDTO toDTO(Certificado c) {
-        String status = c.getValidacao() != null
-                ? c.getValidacao().getStatus()
+    private CertificadoResponseDTO toDTO(Certificado certificado) {
+        String status = certificado.getValidacao() != null
+                ? certificado.getValidacao().getStatus()
                 : "PENDENTE";
         return new CertificadoResponseDTO(
-            c.getId(),
-            c.getTituloAtividade(),
-            c.getCargaHorariaInformada(),
-            c.getDataEnvio(),
-            c.getAluno().getNome(),
+            certificado.getId(),
+            certificado.getTituloAtividade(),
+            certificado.getCargaHorariaInformada(),
+            certificado.getDataEnvio(),
+            certificado.getAluno().getNome(),
             status,
-            c.getArea().getNome()
+            certificado.getArea().getNome()
         );
     }
 }

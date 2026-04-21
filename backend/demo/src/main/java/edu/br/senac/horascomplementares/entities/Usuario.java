@@ -1,4 +1,3 @@
-// entities/Usuario.java
 package edu.br.senac.horascomplementares.entities;
 
 import jakarta.persistence.*;
@@ -25,6 +24,4 @@ public abstract class Usuario {
 
     @Column(nullable = false)
     private String senha;
-
-    // REMOVIDO: private String perfil;  ← era isso que causava o erro
 }

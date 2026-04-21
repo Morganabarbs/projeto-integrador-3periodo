@@ -24,7 +24,7 @@ public class Certificado {
     private String tituloAtividade;
     private LocalDate dataOcr;
     private BigDecimal cargaHorarioOcr;
-
+     
     @ManyToOne
     @JoinColumn(name = "id_area", nullable = false)
     private AreaAtividade area;
@@ -32,4 +32,8 @@ public class Certificado {
     @ManyToOne
     @JoinColumn(name = "id_usuario_aluno", nullable = false)
     private Aluno aluno;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_validacao")
+    private Validacao validacao;
 }

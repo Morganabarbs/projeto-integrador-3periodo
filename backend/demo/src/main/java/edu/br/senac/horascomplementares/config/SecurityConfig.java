@@ -30,22 +30,32 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                // Rotas públicas — qualquer um acessa
+
+
+                .requestMatchers(
+                    "/v3/api-docs/**",
+                    "/swagger-ui/**",
+                    "/swagger-ui.html"
+                ).permitAll()
+                
+                .requestMatchers("/error").permitAll()
+
+                // login liberado para COORDENDOR PRE CADASTRADO NO BANCO
                 .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/auth/cadastro").permitAll()
 
-                // Rotas do aluno
-                .requestMatchers(HttpMethod.POST, "/api/certificados/enviar/**").hasRole("ALUNO")
-                .requestMatchers(HttpMethod.GET, "/api/certificados/aluno/**").hasRole("ALUNO")
+                 // COORDENADOR/ADMIN cria aluno
+                .requestMatchers(HttpMethod.POST, "/usuarios/alunos")
+                    .hasAnyRole("COORDENADOR", "ADMIN")
 
-                // Rotas do coordenador
-                .requestMatchers(HttpMethod.GET, "/api/certificados").hasAnyRole("COORDENADOR", "ADMIN")
-                .requestMatchers(HttpMethod.POST, "/api/validacoes/**").hasAnyRole("COORDENADOR", "ADMIN")
+                // ADMIN cria coordenador
+                .requestMatchers(HttpMethod.POST, "/usuarios/coordenadores")
+                    .hasRole("ADMIN")
 
-                // Rotas do admin
-                .requestMatchers("/api/usuarios/**").hasRole("ADMIN")
+                // ADMIN lista usuários
+                .requestMatchers(HttpMethod.GET, "/usuarios")
+                    .hasRole("ADMIN")
 
-                // Qualquer outra rota precisa estar logado
+                // resto precisa estar logado
                 .anyRequest().authenticated()
             )
             .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

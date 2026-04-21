@@ -46,7 +46,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                             usuario.get(), null, authorities);
                     SecurityContextHolder.getContext().setAuthentication(auth);
                 }
-            }
+            }   
         }
 
         filterChain.doFilter(request, response);
