@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FlatList, Text, View, StyleSheet, Image } from "react-native";
 
 export default function App() {
-  // 1. Criando o "estado" para guardar nossos dados
+  // 1. Criando o "estado" para guardar nossos dado
   const [personagens, setPersonagens] = useState([]);
 
   // 2. Buscando os dados assim que o App abre
