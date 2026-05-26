@@ -31,6 +31,7 @@ export default function App() {
         data={personagens}
         keyExtractor={(item) => String(item.character.mal_id)}
         renderItem={({ item }) => (
+          
           <View style={styles.card}>
             
             {/* NOVO: Componente de Imagem buscando a URL direto da API */}
